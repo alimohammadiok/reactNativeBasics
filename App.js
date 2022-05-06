@@ -1,14 +1,18 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, Button} from 'react-native';
 
 const Message = (props)=> {
+  const [likesCount, setLikesCount]= useState(0);
   return (
-  <Text style={{fontSize:30, padding: 50}}>
-    {props.name}
-  </Text>
+  <View style={{borderWidth: 2}}>
+    <Text style={{fontSize:30, padding: 50}}>
+      {props.name} This Topic is {likesCount} times liked.
+    </Text>
+    <Button title="Like" onPress={()=> setLikesCount(likesCount+1)}/>
+  </View>
+  
   )
 }
-
 
 const AllMessages = ()=> {
   return(
@@ -18,7 +22,5 @@ const AllMessages = ()=> {
     <Message name="Hello Python"/>
   </View>
   )
- 
 }
-
 export default AllMessages;
