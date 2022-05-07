@@ -1,26 +1,34 @@
-import React, {useState} from 'react';
-import {Text, View, Button} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {Text, View, Button, FlatList} from 'react-native';
 
-const Message = (props)=> {
-  const [likesCount, setLikesCount]= useState(0);
+const Message = ()=> {
+  const [messages, setMessages] = useState([]);
+
+  const getMessages = async ()=> {
+    const response = await fetch("http://localhost:3000/data");
+    const data = await response.json();
+    setMessages(data);
+  } 
+
+  useEffect(()=> {
+    getMessages();
+  });
+
   return (
-  <View style={{borderWidth: 2}}>
-    <Text style={{fontSize:30, padding: 50}}>
-      {props.name} This Topic is {likesCount} times liked.
-    </Text>
-    <Button title="Like" onPress={()=> setLikesCount(likesCount+1)}/>
-  </View>
-  
+    <View style={{padding: 30}}>
+      <FlatList
+      data={messages}
+      keyExtractor={(item)=> item.id}
+      renderItem={({item}) => (
+      <View style={{borderBottomWidth: 2}}>
+      <Text style={{fontSize: 30}}>{item.title}
+      and its {item.likesCount} times liked
+      </Text>
+      </View>
+     
+      )}
+      />
+    </View>
   )
 }
-
-const AllMessages = ()=> {
-  return(
-  <View>
-    <Message name="Hello Ract Native"/>
-    <Message name="Hello Java"/>
-    <Message name="Hello Python"/>
-  </View>
-  )
-}
-export default AllMessages;
+export default Message;
