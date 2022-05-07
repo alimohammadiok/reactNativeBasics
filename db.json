@@ -1,0 +1,19 @@
+{
+    "data": [
+        { 
+            "id": 1,
+            "title": "Java",
+            "likesCount": "0" 
+        },
+        { 
+            "id": 2,
+            "title": "React Native",
+            "likesCount": "0" 
+        },
+        { 
+            "id": 3,
+            "title": "Python",
+            "likesCount": "0" 
+        }
+    ]
+}
