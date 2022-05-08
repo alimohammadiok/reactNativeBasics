@@ -12,7 +12,7 @@ const Message = ()=> {
 
   useEffect(()=> {
     getMessages();
-  });
+  }, []);
 
   return (
     <View style={{padding: 30}}>
