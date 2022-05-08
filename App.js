@@ -20,12 +20,11 @@ const Message = ()=> {
       data={messages}
       keyExtractor={(item)=> item.id}
       renderItem={({item}) => (
-      <View style={{borderBottomWidth: 2}}>
-      <Text style={{fontSize: 30}}>{item.title}
-      and its {item.likesCount} times liked
-      </Text>
-      </View>
-     
+        <View style={{borderBottomWidth: 2}}>
+          <Text style={{fontSize: 30}}>{item.title}
+          and its {item.likesCount} times liked
+          </Text>
+        </View>
       )}
       />
     </View>
